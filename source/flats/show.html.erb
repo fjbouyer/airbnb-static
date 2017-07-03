@@ -1,0 +1,59 @@
+<!-- source/flats/show.html.erb -->
+
+<!-- Read from data.flats with owner's name as key -->
+<% flat = data.flats[owner] %>
+
+<!-- Inject flat data in template -->
+<div>
+  <div class="banner-flat" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path flat.picture%>');">
+  </div>
+  <div class="container text-center padding">
+    <div class="flexbox">
+      <div class="text-center">
+        <%= image_tag flat.owner_picture, class: "img-circle avatar-large" %>
+        <p><%= owner %></p>
+      </div>
+      <div class="text-left">
+        <h3><%= flat.summary %></h3>
+        <p><%= flat.city %></p>
+        <div class="star-yellow">
+          <ul class="no-margin">
+            <li>
+              <i class="fa fa-star" style="color: #ffb400"></i>
+            </li>
+              <li>
+              <i class="fa fa-star" style="color: #ffb400"></i>
+            </li>
+              <li>
+              <i class="fa fa-star" style="color: #ffb400"></i>
+            </li>
+              <li>
+              <i class="fa fa-star" style="color: #ffb400"></i>
+            </li>
+              <li>
+              <i class="fa fa-star" style="color: #ffb400"></i>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+      <div class="padded">
+       <div class="form">
+        <form action="#">
+          <div class="form-inline">
+           <input type="date" class="form-control input-lg margin-form" placeholder="checkin">
+           <input type="date" class="form-control input-lg margin-form" placeholder="checkout">
+         </div>
+         <select class="form-control input-lg margin-form">
+          <option value="1">1 person</option>
+          <option value="2">2 persons</option>
+          <option value="3">3 persons</option>
+        </select>
+        <input type="submit" value="Sign In" class="btn btn-primary input-lg margin-form">
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>

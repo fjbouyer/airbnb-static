@@ -79,64 +79,48 @@
     </div>
 
     <div class="container">
-      <div class="row">
+      <div class="row card">
+        <% data.flats.each do |owner, flat| %>
         <div class="col-xs-12 col-sm-4">
-          <div class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('images/card-paris.jpg');">
-           <p class="card-category">Paris</p>
-           <div class="card-description">
-            <h2>Seb's home</h2>
-            <p>Charming room with patio</p>
+        <div class="card" style="background-image: url('<%= image_path flat.picture %>');">
+            <div class="card-category"><%= flat.city %></div>
+            <div class="card-description">
+              <h2><%= flat.name %></h2>
+              <p><%= flat.summary %></p>
+            </div>
+            <%= image_tag flat.owner_picture, class:"card-user avatar avatar-large" %>
+            <%= link_to "#", "flats/#{owner}.html", class: "card-link" %>
           </div>
-          <%= image_tag "seb.jpg", class: "avatar-large card-user" %>
         </div>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <!-- insert <div class="card"> -->
-        <div class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('images/card-brussels.jpeg');">
-         <p class="card-category">Brussels</p>
-         <div class="card-description">
-          <h2>Romain's home</h2>
-          <p>Charming room with patio</p>
-        </div>
-        <%= image_tag "romain.jpeg", class: "avatar-large card-user" %>
+        <% end %>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-4">
-      <!-- insert <div class="card"> -->
-      <div class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('images/card-london.jpeg');">
-       <p class="card-category">London</p>
-       <div class="card-description">
-        <h2>Anne's home</h2>
-        <p>Charming room with patio</p>
-      </div>
-      <%= image_tag "anne.jpg", class: "avatar-large card-user" %>
+  </div>
+
+  <!-- Your newsletter code -->
+  <div class="text-center">
+  <h2>Get news from us</h2>
+  <p>Leave us your email</p>
+  <form action="#" class="form">
+    <div class="form-group form-inline">
+      <input type="email" id="your-email" class="form-control" placeholder="bob@gmail.com">
+      <input type="submit" value="Subscribe" class="btn btn-primary">
     </div>
+  </form>
   </div>
-</div>
-</div>
 
-<!-- Your newsletter code -->
-<h2>Get news from us</h2>
-<p>Leave us your email</p>
-<form action="#" class="form">
-  <div class="form-group form-inline">
-    <input type="email" id="your-email" class="form-control" placeholder="bob@gmail.com">
-    <input type="submit" value="Subscribe" class="btn btn-primary">
-  </div>
-</form>
+  <div id="map" style="width: 100%; height: 400px;"></div>
 
-<div id="map" style="width: 100%; height: 400px;"></div>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+  <script type="text/javascript">
+    var myLatlng = new google.maps.LatLng(48.8655909, 2.378983);
 
-<script type="text/javascript">
-  var myLatlng = new google.maps.LatLng(48.8655909, 2.378983);
-
-  var myOptions = {
-    zoom: 16,
-    center: myLatlng,
-    scrollwheel: false,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    var myOptions = {
+      zoom: 16,
+      center: myLatlng,
+      scrollwheel: false,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
   styles: [] // TODO: replace [] by array from https://snazzymaps.com/
 };
 
